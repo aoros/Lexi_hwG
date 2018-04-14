@@ -31,6 +31,7 @@ public class LexiWindow extends Window {
 
     @Override
     public void key(char keyChar) {
+        System.out.println(keyChar);
         Command c = keyMap.get(keyChar);
         if (c != null) {
             _glyph = c.getGlyph();
