@@ -10,7 +10,7 @@ public class WindowImpFactory {
     private WindowImpFactory() {
     }
 
-    static WindowImp getInstance(String title, Window window) {
+    public static WindowImp getInstance(String title, Window window) {
         if (instance == null) {
             try {
                 switch (SYS_ENV) {
@@ -31,4 +31,9 @@ public class WindowImpFactory {
         return instance;
     }
 
+    public static WindowImp getInstance() {
+        if (instance == null)
+            throw new IllegalStateException("WindowImp hasn't been instantiated.");
+        return instance;
+    }
 }

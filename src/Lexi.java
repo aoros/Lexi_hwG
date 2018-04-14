@@ -6,6 +6,7 @@ import command.MoveForwardCommand;
 import command.RedoCommand;
 import command.RemoveCommand;
 import command.SetFontSizeCommand;
+import command.ToggleInsertionModeCommand;
 import command.UndoCommand;
 import glyph.ActionType;
 import glyph.Border;
@@ -107,7 +108,7 @@ public class Lexi {
         KEY_MAP.put(ctrl('d'), new SetFontSizeCommand(colRoot, window, ActionType.DECR_FONT_SIZE_BY_1, 0));
         KEY_MAP.put(ctrl('u'), new UndoCommand(colRoot, window));
         KEY_MAP.put(ctrl('r'), new RedoCommand(colRoot, window));
-        
+
         // for hw G
         KEY_MAP.put(ctrl('b'), new MoveBackCommand(colRoot, window));
         KEY_MAP.put(ctrl('f'), new MoveForwardCommand(colRoot, window));
@@ -116,9 +117,14 @@ public class Lexi {
         KEY_MAP.put(ctrl('x'), new InsertGlyphCommand(colRoot, window, GlyphType.NEW_ROW));
         KEY_MAP.put(ctrl('c'), new InsertGlyphCommand(colRoot, window, GlyphType.NEW_COLUMN));
         KEY_MAP.put(ctrl('v'), new InsertGlyphCommand(colRoot, window, GlyphType.NEW_SCROLLER));
+        KEY_MAP.put(esc(), new ToggleInsertionModeCommand(colRoot, false));
     }
 
     private static char ctrl(char c) {
         return (char) (c & '\u001f');
+    }
+
+    private static char esc() {
+        return '\u001b';
     }
 }

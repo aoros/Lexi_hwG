@@ -1,6 +1,7 @@
 package window;
 
 import command.Command;
+import command.InsertionStatus;
 import command.KeyMap;
 import glyph.Glyph;
 
@@ -40,6 +41,7 @@ public class LexiWindow extends Window {
             root.compose();
             setContents(root);
         }
+        System.out.println("insertion status: " + InsertionStatus.getInstance().isInsertionMode());
     }
 
     @Override
@@ -56,6 +58,7 @@ public class LexiWindow extends Window {
                 setContents(root);
             }
         }
+        System.out.println("insertion status: " + InsertionStatus.getInstance().isInsertionMode());
     }
 
     @Override
